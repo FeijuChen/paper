@@ -1,0 +1,15 @@
+\addvspace {10.0pt}
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces CNN基本结构\relax }}{2}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces 卷积层实现\relax }}{3}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 池化层实现\relax }}{4}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces 卷积层实现\relax }}{5}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces VGG16\relax }}{5}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces VGG16\relax }}{6}{figure.caption.11}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 2分类\relax }}{8}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 8分类\relax }}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 4分类+4分类\relax }}{8}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 4分类+4分类\relax }}{9}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces 抽取后的数据集\relax }}{10}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 原数据集\relax }}{10}{figure.caption.18}%
