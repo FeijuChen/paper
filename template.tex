@@ -282,28 +282,31 @@ ResNet50在许多计算机视觉任务中都表现出色，
 同时，ResNet50也为后来的深度神经网络提供了很多启示，如更深层次的ResNet-101、ResNet-152等。
 
 \subsection{DenseNet201}
+DenseNet201是一种深度卷积神经网络，是2016年由Kaiming He等人提出的。
+它的主要特点是密集连接（Dense Connectivity），即每个层的输出都与之前所有层的输出连接在一起，形成了一个密集的连接结构，这样可以有效地提高特征复用和梯度流动，
+使得模型的性能得到了大幅度的提升。
+
+DenseNet201的网络结构相对较深，包含多个密集块（Dense Block），每个密集块内部由多个卷积层、BN层和ReLU激活层构成。
+在每个密集块的末尾，还包含了一个转换层（Transition Layer），用于控制特征图的尺寸和通道数。整个网络还包含了一个全局平均池化层和一个softmax分类器。
+
+DenseNet201在多个计算机视觉领域的任务中都表现出了很好的性能，比如图像分类、目标检测、语义分割等。同时，由于它的密集连接结构，它在参数数量和计算复杂度方面也有一定的优势。因此，DenseNet201是一种非常有用的深度学习模型。
+
 
 \section{算法流程}
 
 算法主要流程如下：
+
 1.导入所需的Python库。
 
-2.使用 Dataset_loader 函数从图像目录中加载 jpg 图像并将它们转换为数组。
+2.从图像目录中加载图像并将它们转换为数组。
 
-3.从训练和验证数据中的良性和恶性皮肤癌病例中创建标签，合并数据并将其打乱。
+3.为良性和恶性样本创建标签，合并数据并将其打乱。
 
 4.将标签转换为分类矩阵。
 
-5.使用图像数据生成器 ImageDataGenerator 从训练集中生成批处理数据。
+5.创建卷积神经网络模型。并使用生成器对模型进行训练，设置回调函数以在验证集上监控模型的性能并定期保存最模型。
 
-6.创建一个具有 DenseNet201 和 GlobalAveragePooling2D 层的模型，通过使用 Adam 优化器和分类交叉熵损失函数来编译该模型。
-
-7.使用生成器对模型进行训练，设置回调函数以在验证集上监控模型的性能并定期保存最佳模型。
-
-8.在验证集上进行预测并评估模型性能。
-
-9.使用测试集和 Test Time Augmentation (TTA) 进行预测并生成最终的分类结果。
-
+6.在验证集上进行预测并评估模型性能。
 
 \chapter{实验和分析}
 \section{数据集}
@@ -342,39 +345,11 @@ BreakHis数据集结构如下：
 
 
 \end{table}
-
-而根据肿瘤细胞在显微镜下的外观，又可以将良性和恶性乳腺肿瘤分为不同的类型。
-各种类型/亚型的乳腺肿瘤可能具有不同的诊断和治疗意义。
-该数据集目前包含四种不同组织学类型的良性乳腺肿瘤：腺病 (A)、纤维腺瘤 (F)、叶状肿瘤 (PT) 和管状腺酮 (TA)；
-和四种恶性肿瘤（乳腺癌）：癌（DC）、小叶癌（LC）、粘液癌（MC）和乳头状癌（PC）。
- 
-据此在本文在实现乳腺癌图像分类时采用了不同的分类标准，并对结果进行了比较。一是最基础的二分类，即将所有图像仅分成良性
-恶性两类。
-
+下面是BreakHis数据集中的一些图片：
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{1.jpeg}
-    \caption{2分类}
-    \label{figure}
- \end{figure}
-  
-
-二是直接进行8分类，即直接将整个数据集分成A，F，PT，TA，DC，LC，MC，PC8类。
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.2]{2.jpeg}
-    \caption{8分类}
-    \label{figure}
- \end{figure}
-
-
-三是分别对良性和恶性两个数据集进行四分类。
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.1]{3.jpeg}
-    \caption{4分类+4分类}
+    \includegraphics[scale=0.2]{14.png}
+    \caption{BreakHis}
     \label{figure}
  \end{figure}
 
@@ -388,15 +363,40 @@ INbreast数据集中的每张乳腺X射线图像都包含了医生的诊断结�
 同时，数据集中也包含了一些异常和其他诊断结果的标注，例如乳腺增生和钙化等。这些诊断结果和标注信息可以帮助研究人员进行乳腺癌筛查和诊断算法的开发和评估。
 
 INbreast数据集中的每张图像的标注信息可以通过查看相应的XML文件来获取。
-每个XML文件都与该图像的文件名相对应，并且包含了该图像的详细标注信息，例如病变的位置、大小、形状、密度等等。同时，每个XML文件中也包含了该图像的诊断结果，即该图像是否为恶性乳腺癌等信息。
-可以使用XML文件解析器等工具来读取和解析这些XML文件，以获取乳腺X射线图像的标注信息和诊断结果。
-此外，INbreast数据集的官方网站上也提供了相关的文档和代码示例，以帮助研究人员更好地使用和理解该数据集。
+每个XML文件都与该图像的文件名相对应，并且包含了该图像的详细标注信息，例如病变的位置、大小、形状、密度等等
+
+部分信息如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{15.png}
+    \caption{BreakHis}
+    \label{figure}
+ \end{figure}
+  
+ 由于该表格只是给出了相关的指标和诊断建议，并没有具体的良性恶性标签。所以在实际实验中根据表中的Bi-Ras值对图片进行标记。
+ 它是用于乳腺X线摄影检查结果分类的一种标准，包括0-6级，用于评估乳房肿块或其他异常发现的可能性。这些级别包括：
+
+ 0级：需要进一步影像学检查和/或额外的评估。
+
+ 1级：阴性，无明显异常。
+
+ 2级：良性，无恶性病变的病理学特征。
+
+ 3级：概率良性，但建议进行短期随访检查。
+
+ 4级：可疑，建议进行进一步组织学检查。
+
+ 5级：高度可疑，建议进行活检。
+
+ 6级：已知为恶性病变，需进行治疗。
 
 
+ 在实际打标签的过程中，将0-3标记为良性而将4-6标记为恶性。
 
+ 
 
 \section{实验结果分析}
-\subsection{}
+\subsection{不同的数据集结构}
 首先在选用BreakHis数据集进行二分类时，整个数据集进行如下分割：
 \begin{figure}[H]
     \centering
@@ -427,99 +427,48 @@ INbreast数据集中的每张图像的标注信息可以通过查看相应的XML
 通过实验，经过抽取后的
 
 
-\begin{itemize}
-  \item [1. 正文] AHEMoS$\alpha \beta$
-  \item[2. 公式]  $AHEMoS \alpha \beta$
-  \item[3. mathbf] $\mathbf{AHEMoS\alpha \beta}$
-  \item [4. boldsymbol] $\boldsymbol{AHEMoS\alpha \beta}$
-  % \item [5. bm] $\bm{AHEMoS\alpha \beta}$
-\end{itemize}
+\subsection{不同的分类方式}
+而根据肿瘤细胞在显微镜下的外观，又可以将良性和恶性乳腺肿瘤分为不同的类型。
+各种类型/亚型的乳腺肿瘤可能具有不同的诊断和治疗意义。
+该数据集目前包含四种不同组织学类型的良性乳腺肿瘤：腺病 (A)、纤维腺瘤 (F)、叶状肿瘤 (PT) 和管状腺酮 (TA)；
+和四种恶性肿瘤（乳腺癌）：癌（DC）、小叶癌（LC）、粘液癌（MC）和乳头状癌（PC）。
+ 
+据此在本文在实现乳腺癌图像分类时采用了不同的分类标准，并对结果进行了比较。一是最基础的二分类，即将所有图像仅分成良性
+恶性两类。
 
-这个加粗、斜体、英文字体（含正文和公式内字体），有不同的处理方式，在 .cls 模板文件文件搜索 bm 查看详细说明
-
-
-% subsection 公式 (end)
-
-\subsection{左边大括号} % (fold)
-\label{sub:左边大括号}
-
-\begin{equation}
-    \left\{
-    \begin{array}{rcl}
-        \vec{e_1} &= \frac{3a}{2} \vec{i} + \frac{\sqrt{3a}}{2} \vec{j} \\
-        \vec{e_2} &= \frac{3a}{2} \vec{i} - \frac{\sqrt{3a}}{2} \vec{j}
-    \end{array}
-    \right.
-    \label{e1e2}
-\end{equation}
-
-注意后面有个方程的编号，如果想取消，把上下的两个$equation$改成$equation*$
-
-\begin{equation*}
-    \left\{
-    \begin{array}{rcl}
-        \vec{e_1} &= \frac{3a}{2} \vec{i} + \frac{\sqrt{3a}}{2} \vec{j} \\
-        \vec{e_2} &= \frac{3a}{2} \vec{i} - \frac{\sqrt{3a}}{2} \vec{j}
-    \end{array}
-    \right.
-    \label{e1e2_2}
-\end{equation*}
-
-% subsection 左边大括号 (end)
-
-\subsection{复杂公式} % (fold)
-\label{sub:复杂公式}
-不会输出的符号，请百度，啥都有
-
-\begin{equation}
-\hat{HQR}=\frac{\epsilon}{2}\hat{\sigma}_{z}-\frac{\Delta}{2}\hat{\sigma}_{x}+\sum_{k}\omega_{k}\hat{b}_{k}^{\dagger}\hat{b}_{k}+\sum_{k}\frac{g_{k}}{2}\hat{\sigma}_{z}(\hat{b}_{k}+\hat{b}_{k}^{\dagger})\label{eq:sbm}
-\end{equation}
-
-% subsection 复杂公式 (end)
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{1.jpeg}
+    \caption{2分类}
+    \label{figure}
+ \end{figure}
 
 
-\subsection{等号对齐站} % (fold)
-\label{sub:等号对齐站}
+二是直接进行8分类，即直接将整个数据集分成A，F，PT，TA，DC，LC，MC，PC8类。
 
-主要是用这个aligned放在了方程的环境里，等号前面\&控制对齐，每一行后面双斜杠换行
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{2.jpeg}
+    \caption{8分类}
+    \label{figure}
+ \end{figure}
 
-\begin{equation}
-    \begin{aligned}
-        \vec{CH} & = m\cdot \vec{e_1} + n\cdot \vec{e_2} \\
-        & = \frac{3(m+n)a}{2} \vec{i} + \frac{\sqrt{3}(m-n)a}{2} \vec{j} 
-    \end{aligned}
-    \label{ch}
-\end{equation}
 
-% subsection 等号对齐站 (end)
+三是分别对良性和恶性两个数据集进行四分类。
 
-\subsection{矩阵乘法} % (fold)
-\label{sub:矩阵乘法}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.1]{3.jpeg}
+    \caption{4分类+4分类}
+    \label{figure}
+ \end{figure}
 
-其实就是几个array组合
+ 
 
-\begin{equation}
-    \left[ 
-    \begin{array}{c}
-    x'\\
-    y'\\
-    \end{array}
-    \right]=
-    \left[ 
-    \begin{array}{cc}
-    cos \theta & sin \theta \\
-    - sin \theta & cos \theta 
-    \end{array}
-    \right]
-    \cdot
-    \left[ 
-    \begin{array}{c}
-        x\\
-        y\\
-    \end{array}
-    \right]
-\end{equation}
-% subsection 矩阵乘法 (end)
+\subsection{不同的神经网络模型}
+
+
+\subsection{不同的数据集}
 
 
 

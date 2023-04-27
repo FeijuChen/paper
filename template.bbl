@@ -1,0 +1,29 @@
+\providecommand{\href}[2]{#2}\begingroup\zihao{5}\begin{thebibliography}{1}\linespread{1}\selectfont\setlength{\baselineskip}{16pt}\setlength{\parskip}{0pt}
+\makeatletter
+\providecommand \href@noop [0]{\@secondoftwo}%
+
+\bibitem{partl2016}
+Partl H, Hyna I, 兰朵儿, et~al. { 一份不太简短的 latex2$\varepsilon$ 介绍}[J]. {\em 测试期刊}, 2016, 360(6403):444--446.
+
+\bibitem{tenne1992polyhedral}
+Tenne R, Margulis L, Genut M~e, et~al. { Polyhedral and cylindrical structures of tungsten disulphide}[J]. {\em Nature}, 1992, 360(6403):444--446.
+
+\bibitem{tussyadiah2015hotels}
+Tussyadiah I, Zach F. { Hotels vs. peer-to-peer accommodation rentals: Text analytics of consumer reviews in portland, oregon}[C]. Whitehall, MI, USA: TTRA. 2015.
+
+\bibitem{partl2021}
+Partl H, Hyna I, 兰朵儿, 等. { 国家一个中文等测试}[J]. {\em 测试期刊}, 2021, 3(6):10--20.
+
+\bibitem{partl2022}
+兰朵儿. { 国家一个中文空格测试}[J]. {\em 测试期刊}, 2021, 3(6):10--20.
+
+\bibitem{partl2022-2}
+兰朵儿. { 大写字母测试{MnmN}}[J]. {\em 测试期刊}, 2021, 3(6):10--20.
+
+\bibitem{intelnewsroomIntelUnveils12th2021}
+Newsroom I. { Intel {Unveils} 12th {Gen} {Intel} {Core}, {Launches} {World}’s {Best} {Gaming}...}[DB/OL].  {\url{https://www.intel.com/content/www/us/en/newsroom/news/12th-gen-core-processors.html}}, October, 2021.
+
+\bibitem{wilsonHistoryDevelopmentParallel1994}
+Wilson G~V. { The {History} of the {Development} of {Parallel} {Computing}}[Z], October, 1994.  {\url{https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html}}.
+
+\end{thebibliography}\endgroup

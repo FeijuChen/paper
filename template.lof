@@ -7,9 +7,11 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces VGG16\relax }}{5}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces VGG16\relax }}{6}{figure.caption.11}%
 \addvspace {10.0pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces 2分类\relax }}{8}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces 8分类\relax }}{8}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces 4分类+4分类\relax }}{8}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces 4分类+4分类\relax }}{9}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces 抽取后的数据集\relax }}{10}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces 原数据集\relax }}{10}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces BreakHis\relax }}{8}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces BreakHis\relax }}{9}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 4分类+4分类\relax }}{10}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 抽取后的数据集\relax }}{10}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces 原数据集\relax }}{10}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 2分类\relax }}{11}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces 8分类\relax }}{11}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces 4分类+4分类\relax }}{12}{figure.caption.20}%
